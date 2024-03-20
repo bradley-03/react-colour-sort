@@ -39,15 +39,18 @@ function App() {
 						</button>
 						&nbsp;
 						<button onClick={onImageRemoveAll}>Remove all images</button>
+						<div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: '15px'}}>
 						{imageList.map((image, index) => (
 							<div key={index} className="image-item">
-								<img src={image.data_url} alt="" width="100" />
+								<img src={image.data_url} alt="" style={{height: '150px', width: '150px', objectFit: 'cover'}} />
 								<div className="image-item__btn-wrapper">
 									<button onClick={() => onImageUpdate(index)}>Update</button>
 									<button onClick={() => onImageRemove(index)}>Remove</button>
 								</div>
 							</div>
 						))}
+						</div>
+						
 					</div>
 				)}
 			</ImageUploading>
