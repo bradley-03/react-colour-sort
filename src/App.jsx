@@ -1,13 +1,19 @@
 import { useState } from 'react'
 import './App.css'
 import ImageUploading from 'react-images-uploading'
+import {prominent} from 'color.js'
 
 function App() {
 	const [images, setImages] = useState([])
 
-	const onChange = (imageList, addUpdateIndex) => {
+	const onChange = async (imageList, addUpdateIndex) => {
 		// data for submit
-		console.log(imageList, addUpdateIndex);
+		// console.log(imageList, addUpdateIndex)
+		console.log(imageList[0])
+
+		// const color = await prominent(imageList[0]["data_url"], {amount: 1})
+		// console.log(color)
+
 		setImages(imageList);
 	};
 
@@ -39,7 +45,7 @@ function App() {
 						</button>
 						&nbsp;
 						<button onClick={onImageRemoveAll}>Remove all images</button>
-						<div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: '15px'}}>
+						<div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: '15px', flexWrap: 'wrap'}}>
 						{imageList.map((image, index) => (
 							<div key={index} className="image-item">
 								<img src={image.data_url} alt="" style={{height: '150px', width: '150px', objectFit: 'cover'}} />
