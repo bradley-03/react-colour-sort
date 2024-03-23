@@ -9,10 +9,15 @@ function App() {
 	const onChange = async (imageList, addUpdateIndex) => {
 		// data for submit
 		// console.log(imageList, addUpdateIndex)
-		console.log(imageList[0])
 
-		// const color = await prominent(imageList[0]["data_url"], {amount: 1})
-		// console.log(color)
+		for (let [index, image] of imageList.entries()) {
+			try {
+				const prominentColor = await prominent(image["data_url"], {amount: 1})
+				imageList[index]["prominent_color"] = prominentColor
+			} catch (e) {
+				console.log(e)
+			}
+		}
 
 		setImages(imageList);
 	};
