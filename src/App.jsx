@@ -3,6 +3,7 @@ import './App.css'
 import ImageUploading from 'react-images-uploading'
 import { prominent } from 'color.js'
 import { dotWave } from 'ldrs'
+import colorSortFn from '../util/colorSortFn'
 
 function App() {
 	const [images, setImages] = useState([])
@@ -19,7 +20,7 @@ function App() {
 			try {
 				if (!imageList[index]["prominent_color"]) {
 					const prominentColor = await prominent(image["data_url"], { amount: 1 })
-					imageList[index]["prominent_color"] = prominentColor
+					imageList[index]["prominent_color"] = `rgb(${prominentColor[0]}, ${prominentColor[1]}, ${prominentColor[2]})`
 				}
 			} catch (e) {
 				console.log(e)
@@ -27,7 +28,9 @@ function App() {
 		}
 		setLoading(false)
 
-		setImages(imageList);
+		const sorted = imageList.sort(colorSortFn)
+
+		setImages(sorted);
 	};
 
 	return (
