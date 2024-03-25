@@ -59,7 +59,7 @@ function App() {
 							Click or Drop here
 						</button>
 						&nbsp;
-						<button onClick={onImageRemoveAll}>Remove all images</button>
+						{imageList.length > 0 && <button onClick={onImageRemoveAll}>Remove all images</button>}
 						<br></br>
 						{loading && <l-dot-wave size="50" speed="1" color="white" style={{marginTop: '10px'}} />}
 						<div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: '15px', flexWrap: 'wrap' }}>
