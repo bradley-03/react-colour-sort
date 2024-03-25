@@ -1,5 +1,6 @@
 .Image {
     position: relative;
+    margin: 6px;
 }
 
 .Image img {
@@ -7,6 +8,7 @@
     width: 200px;
     object-fit: cover;
     transition: 0.2s;
+    border-radius: 5px;
 }
 
 .Image:hover .overlay {
