@@ -12,7 +12,7 @@ function App() {
 
 	dotWave.register()
 
-	const onChange = async (imageList, addUpdateIndex) => {
+	const onChange = async (imageList) => {
 		setLoading(true)
 		for (let [index, image] of imageList.entries()) {
 			try {
