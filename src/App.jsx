@@ -4,6 +4,7 @@ import ImageUploading from 'react-images-uploading'
 import { prominent } from 'color.js'
 import { dotWave } from 'ldrs'
 import colorSortFn from '../util/colorSortFn'
+import Image from './Image'
 
 function App() {
 	const [images, setImages] = useState([])
@@ -64,13 +65,7 @@ function App() {
 						{loading && <l-dot-wave size="50" speed="1" color="white" style={{marginTop: '10px'}} />}
 						<div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: '15px', flexWrap: 'wrap' }}>
 							{imageList.map((image, index) => (
-								<div key={index} className="image-item">
-									<img src={image.data_url} alt="" style={{ height: '150px', width: '150px', objectFit: 'cover' }} />
-									<div className="image-item__btn-wrapper">
-										<button onClick={() => onImageUpdate(index)}>Update</button>
-										<button onClick={() => onImageRemove(index)}>Remove</button>
-									</div>
-								</div>
+								<Image key={index} index={index} image={image} onImageRemove={onImageRemove} onImageUpdate={onImageUpdate} />
 							))}
 						</div>
 
