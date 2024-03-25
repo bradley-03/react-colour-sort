@@ -12,13 +12,11 @@ function App() {
 	dotWave.register()
 
 	const onChange = async (imageList, addUpdateIndex) => {
-		// data for submit
-		// console.log(imageList, addUpdateIndex)
-
 		setLoading(true)
 		for (let [index, image] of imageList.entries()) {
 			try {
 				if (!imageList[index]["prominent_color"]) {
+					// grab the prominent color of image
 					const prominentColor = await prominent(image["data_url"], { amount: 1 })
 					imageList[index]["prominent_color"] = `rgb(${prominentColor[0]}, ${prominentColor[1]}, ${prominentColor[2]})`
 				}
@@ -28,6 +26,7 @@ function App() {
 		}
 		setLoading(false)
 
+		// sort image based on colors
 		const sorted = imageList.sort(colorSortFn)
 
 		setImages(sorted);
